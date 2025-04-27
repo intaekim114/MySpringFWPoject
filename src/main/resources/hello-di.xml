@@ -5,12 +5,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
-	<!-- StringPrinter 클래스를 Spring Bean으로 설정 -->
+	<!-- StringPrinter 클래스를 Spring Bean으로 설정 --> <!-- 클래스를 만들었지만 프레임워크가 대신 객체를 생성해 주기 때문에 알려줘야한다. -->
 	<bean id="strPrinter" class="myspring.di.xml.StringPrinter" />
 	
 	<!-- ConsolePrinter 클래스를 Spring Bean으로 설정 -->
 	<bean id="consolePrinter" class="myspring.di.xml.ConsolePrinter" />
 	
-	<!-- Hello 클래스를 Spring Bean으로 설정 -->
-	
+	<!-- Hello 클래스를 Spring Bean으로 설정 Setter Injection 방식-->
+	<bean id="hello" class="myspring.di.xml.Hello" scope="singleton"> 
+														<!-- bean의 속성 scope은 일반적으로 singleton이다. 
+														singleton: 주어진 아이디로 getBean을 하면 하나의 인스턴스만 공유? 
+														그러나 prototype으로 하면 각각 독립적인 인스턴스를 반환한다. -->
+		<property name="name" value="스프링"/>
+		<property name="printer" ref="strPrinter"/>
+	</bean>
 </beans>
