@@ -1,12 +1,13 @@
 package myspring.di.xml;
 
-import org.junit.jupiter.api.Assertions;
+//Assertions에 포함된 모든 static method를 import 한다.
+// static import
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
-
-//Assertions에 포함된 모든 static method를 import 한다.
-import static org.junit.jupiter.api.Assertions.*; // static import
 
 public class HelloJunitTest {
 	
@@ -25,12 +26,15 @@ public class HelloJunitTest {
 		assertSame(helloById, helloByType); // junit에서 제공하는 Assertions라는 클래스의 함수를 사용
 		
 		// 프레임워크가 생성한 객체의 name 값을 비교
+		// <property name="name" value="스프링"/> 이 설정 테스트
 		assertEquals("Hello 스프링", helloById.sayHello()); // (기대 되어지는 값, 호출 함수?
 		
 		// hello-di에 있는 this.printer에 printer 값이 잘 들어갔나 확인 하기 위해 this.printer 구문을 사용하는 함수를 호출해 보는 것
+		// <property name="printer" ref="strPrinter"/> 이 설정 테스트
 		helloById.print();
 		
 		// Container 객체가 생성한 StringPrinter 스프링 빈을 요청하기
-		context.getBean("strPrinter", Printer.class);
+		Printer printer = context.getBean("strPrinter", Printer.class);
+		assertEquals("Hello 스프링", printer.toString());
 	}
 }
