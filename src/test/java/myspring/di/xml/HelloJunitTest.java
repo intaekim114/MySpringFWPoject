@@ -5,16 +5,23 @@ package myspring.di.xml;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class HelloJunitTest {
+	ApplicationContext context;
+	
+	@BeforeEach // Test케이스 전에 사전에 설정해줘야하는 부분 있을 때 사용
+	void container() { // 따로 호출 안하더라도 junit이 불러줌
+		// 1. Container 객체 생성				container 역할
+		context = new GenericXmlApplicationContext("classpath:hello-di.xml"); // XML 파일을 알려줘야 알아서 객체 생성을 함
+		
+	}
 	
 	@Test
 	void helloBean() {
-		// 1. Container 객체 생성				container 역할
-		ApplicationContext context = new GenericXmlApplicationContext("classpath:hello-di.xml"); // XML 파일을 알려줘야 알아서 객체 생성을 함
 																//classpath하는 이유 xml파일이 show navigator로 보면 target.classes 폴더에 들어있음 
 		// 2. Container 객체가 생성한 Spring Bean 요청하기
 		Hello helloById = (Hello)context.getBean("hello"); // container는 hello-di.xml "hello"는 bean의 ID
@@ -36,5 +43,8 @@ public class HelloJunitTest {
 		// Container 객체가 생성한 StringPrinter 스프링 빈을 요청하기
 		Printer printer = context.getBean("strPrinter", Printer.class);
 		assertEquals("Hello 스프링", printer.toString());
+		
+		// 계속 getBean을 사용해야 하는 것에 번거로움을 느낌
+		// JUnit 확장해서 더 편하게 한게 Spring Test
 	}
 }
