@@ -28,7 +28,7 @@ public class Hello {
 
 	public void setName(String name) {
 		System.out.println("setName() 메서드 호출됨" + name);
-		this.name = name;
+		this.name = name; // "스프링" 값이 잘 넘어갔나 확인하기 위해서 name 값을 확인
 	}
 
 	public void setPrinter(Printer printer) {
@@ -37,10 +37,11 @@ public class Hello {
 	}
 
 	public String sayHello() {
-		return "Hello " + name;
+		return "Hello " + name; // Hello 스프링   -> 기대되어지는 결과값
 	}
 
 	public void print() {
+		// print에 ctrl+클릭 => open implementation(어떻게 구현되었는지) 클릭 string printer
 		this.printer.print(sayHello());
 	}
 
