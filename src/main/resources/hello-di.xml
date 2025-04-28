@@ -24,7 +24,14 @@
 		<!-- Argument 많은 생성자 (오버로딩된 생성자)를 사용할 때는  이렇게 한다. -->
 		<bean id = "helloC" class ="myspring.di.xml.Hello">
 			<constructor-arg index="0" value="생성자" />
-			<constructor-arg index="1" ref="conPrinter" /> 
+			<constructor-arg index="1" ref="conPrinter" />
+			<property name= "names">
+				<list>
+					<value>스프링프레임워크</value> <!-- String list라서 value 태그 사용 -->
+					<value>스프링부트</value>
+					<value>스프링클라우드</value>
+				</list>
+			</property> 
 		</bean>
 		
 </beans>
