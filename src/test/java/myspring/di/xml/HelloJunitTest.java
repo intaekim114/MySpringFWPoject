@@ -2,8 +2,7 @@ package myspring.di.xml;
 
 //Assertions에 포함된 모든 static method를 import 한다.
 // static import
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
