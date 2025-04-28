@@ -1,4 +1,5 @@
 package mylab.student.di.xml;
+
 public class Student {
     private String id;
     private String name;
