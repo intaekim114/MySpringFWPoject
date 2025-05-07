@@ -21,6 +21,18 @@ public class StudentSpringTest {
 	@Resource(name = "gradeService") // 이름을 기준으로 찾기 때문에 name 반드시!
 	GradeService service;
 	
+	@Test
+	void testService() {
+		assertNotNull(service);
+		assertEquals("C001", service.getCourse().getCourseId());
+		assertEquals("A", service.calculateGrade("S001"));
+		assertEquals(2, service.getHighScoreStudents(80).size());
+		
+		for(Student student : service.getHighScoreStudents(80)) {
+			System.out.println(student);
+		}
+	}
+	
 	@Test @Disabled
 	void testCourse() {
 		assertNotNull(course);
