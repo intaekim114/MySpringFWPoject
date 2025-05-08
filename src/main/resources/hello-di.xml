@@ -37,4 +37,7 @@
 		<!-- Auto Component Scanning 설정  -->
 		<context:component-scan base-package="myspring.di.annot"></context:component-scan>
 		
+		<!-- values.properties 파일의 정보를 설정 -->
+		<context:property-placeholder location="classpath:values.properties"/>
+		
 </beans>
