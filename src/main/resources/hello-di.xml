@@ -16,7 +16,7 @@
 														<!-- bean의 속성 scope은 일반적으로 singleton이다. 
 														singleton: 주어진 아이디로 getBean을 하면 하나의 인스턴스만 공유? 
 														그러나 prototype으로 하면 각각 독립적인 인스턴스를 반환한다. -->
-		<property name="name" value="스프링"/>
+		<property name="name" value="${myName1}"/>
 		<property name="printer" ref="strPrinter"/>
 	</bean>
 		
