@@ -26,10 +26,14 @@ public class NotificationConfigTest {
 	
 	@Test
 	void testNotificationConfig() {
+		
 		assertNotNull(manager);
 		assertNotNull(emService);
 		assertNotNull(smService);
-		
+		emService.sendNotification("안녕");
+		smService.sendNotification("Hi");
+		manager.sendNotificationByEmail("안녕");
+		manager.sendNotificationBySms("Hi");
 		
 	}
 }
